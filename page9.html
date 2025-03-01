@@ -1,114 +1,300 @@
-
 <!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>عناصر النصوص وعناصر HTML5</title>
+    <meta name="keywords" content="HTML, تعلم البرمجة, تطوير الويب, عناصر النصوص, عناصر HTML5">
+    <meta name="description" content="دليل شامل لعناصر النصوص وعناصر HTML5 مع أمثلة عملية وتطبيقات تفاعلية">
+
+    <!-- تنسيقات CSS -->
     <style>
+        :root {
+            --primary-color: #00b4d8;
+            --secondary-color: #90e0ef;
+            --accent-color: #0077b6;
+            --text-color: #2d3436;
+            --bg-color: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        /* وضع الظلام */
+        .dark-theme {
+            --primary-color: #023e8a;
+            --secondary-color: #0077b6;
+            --accent-color: #00b4d8;
+            --text-color: #f8f9fa;
+            --bg-color: #212529;
+            --code-bg: #343a40;
+        }
+
         body {
             direction: rtl;
             text-align: right;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
         }
-        h1, h2, h3, h4 {
-            text-align: center;
-        }
-        code {
-            background-color: #f4f4f4;
-            padding: 0.2em 0.4em;
-            border-radius: 4px;
-            font-size: 0.9em;
-            color: #c7254e;
-            background-color: #f9f2f4;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 1em;
-            border-radius: 4px;
-            overflow-x: auto;
-        }
-        h1{border:solid 10px;
-        color: rgb(127, 129, 129);
-        text-align: center;
-        background-color: aqua;
-        border-top: ;
 
-       }
-       .nav-button {
-            background-color: deepskyblue; /* اللون الجميل بشكل دائم */
-            color: black; /* اللون الأسود */
-            padding: 10px 20px;
-            margin: 20px; /* زيادة التباعد بين الأزرار */
-            border: none;
-            border-radius: 5px;
-            text-decoration: none;
-            box-shadow: 0 0 15px deepskyblue; /* تأثير الإضاءة */
+        /* تنسيق العنوان الرئيسي */
+        h1 {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 90%;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
+
+        /* تنسيق العناوين الفرعية */
+        h2, h3 {
+            color: var(--accent-color);
+            border-right: 4px solid var(--primary-color);
+            padding-right: 15px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        /* تنسيق الأزرار */
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            margin: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* تأثير التوهج للأزرار */
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: buttonGlow 3s infinite linear;
+        }
+
+        /* تنسيق أكواد الأمثلة */
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: var(--accent-color);
+        }
+
+        /* زر تبديل الثيم */
+        .theme-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        /* أنيميشن التوهج */
+        @keyframes buttonGlow {
+            0% { transform: rotate(45deg) translateX(-150%); }
+            100% { transform: rotate(45deg) translateX(150%); }
+        }
+
+        /* تأثيرات الhover */
         .nav-button:hover {
-            background-color: deepskyblue; /* نفس اللون عند التمرير */
-            box-shadow: 0 0 20px deepskyblue; /* زيادة تأثير الإضاءة عند التمرير */
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2:hover, h3:hover {
+            transform: translateX(10px);
+            color: var(--primary-color);
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
         }
     </style>
+
+    <!-- الشيفرات البرمجية JavaScript -->
+    <script>
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', () => {
+            // تحميل وضع الثيم المحفوظ
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+                document.querySelector('.theme-toggle').textContent = savedTheme === 'dark-theme' ? '☀️' : '🌙';
+            }
+
+            // إضافة تأثيرات للعناوين
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+
+            // إدارة الأحداث للأزرار
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // تأثير رش الماء
+                    const ripple = document.createElement('div');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        background: rgba(255,255,255,0.5);
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%);
+                        animation: ripple 0.6s linear;
+                    `;
+                    
+                    const rect = this.getBoundingClientRect();
+                    ripple.style.left = `${e.clientX - rect.left}px`;
+                    ripple.style.top = `${e.clientY - rect.top}px`;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => window.location.href = this.href, 300);
+                });
+            });
+        });
+
+        // تبديل وضع الثيم
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark-theme' : '');
+            document.querySelector('.theme-toggle').textContent = isDark ? '☀️' : '🌙';
+        }
+    </script>
 </head>
+
 <body>
-    <h1>عناصر النصوص وعناصر HTML5 في HTML</h1>
-    <div><a class="nav-button" href="index.html">الصفحةالرئيسيه</a>
-       
-        <a class="nav-button" href="page8.html">الدرس السابق</a>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
 
-    </div>
+    <header>
+        <h1>عناصر النصوص وعناصر HTML5</h1>
+    </header>
 
-    <h2>عناصر النصوص (Text Elements)</h2>
-    <p>تُستخدم عناصر النصوص لتنسيق النصوص داخل الصفحة.</p>
-    
-    <h3>أمثلة على عناصر النصوص:</h3>
-    <ul>
-        <li><code>&lt;b&gt;</code>: يُستخدم لجعل النص عريضًا.</li>
-        <li><code>&lt;i&gt;</code>: يُستخدم لجعل النص مائلًا.</li>
-        <li><code>&lt;strong&gt;</code>: يُستخدم لجعل النص عريضًا مع معنى أقوى.</li>
-        <li><code>&lt;em&gt;</code>: يُستخدم لجعل النص مائلًا مع معنى أقوى.</li>
-        <li><code>&lt;small&gt;</code>: يُستخدم لجعل النص صغيرًا.</li>
-        <li><code>&lt;mark&gt;</code>: يُستخدم لتحديد نص مميز أو مُبرز.</li>
-    </ul>
+    <nav style="text-align: center; margin: 30px 0;">
+        <a class="nav-button" href="index.html">🏠 الصفحة الرئيسية</a>
+        <a class="nav-button" href="page8.html">📚 الدرس السابق</a>
+    </nav>
 
-    <h3>مثال على استخدام العناصر النصية:</h3>
-    <pre><code>&lt;b&gt;نص عريض&lt;/b&gt;
+    <main style="max-width: 1000px; margin: 0 auto;">
+        <!-- قسم العناصر النصية -->
+        <section>
+            <h2>عناصر النصوص (Text Elements)</h2>
+            <p>تُستخدم عناصر النصوص لتنسيق النصوص داخل الصفحة.</p>
+            
+            <h3>أمثلة على عناصر النصوص:</h3>
+            <ul>
+                <li><code>&lt;b&gt;</code>: يُستخدم لجعل النص عريضًا.</li>
+                <li><code>&lt;i&gt;</code>: يُستخدم لجعل النص مائلًا.</li>
+                <li><code>&lt;strong&gt;</code>: يُستخدم لجعل النص عريضًا مع معنى أقوى.</li>
+                <li><code>&lt;em&gt;</code>: يُستخدم لجعل النص مائلًا مع معنى أقوى.</li>
+                <li><code>&lt;small&gt;</code>: يُستخدم لجعل النص صغيرًا.</li>
+                <li><code>&lt;mark&gt;</code>: يُستخدم لتحديد نص مميز أو مُبرز.</li>
+            </ul>
+
+            <h3>مثال على استخدام العناصر النصية:</h3>
+            <pre><code>&lt;b&gt;نص عريض&lt;/b&gt;
 &lt;i&gt;نص مائل&lt;/i&gt;
 &lt;strong&gt;نص مهم&lt;/strong&gt;
 &lt;em&gt;نص مؤكد&lt;/em&gt;
 &lt;small&gt;نص صغير&lt;/small&gt;
 &lt;mark&gt;نص مميز&lt;/mark&gt;</code></pre>
+        </section>
 
-    <h2>عناصر خاصة بالـHTML5 (HTML5-Specific Elements)</h2>
-    <p>تُضيف HTML5 مجموعة من العناصر الجديدة التي تُسهل التعامل مع البيانات وإنشاء محتوى أكثر تفاعلية.</p>
+        <!-- قسم عناصر HTML5 -->
+        <section>
+            <h2>عناصر خاصة بالـHTML5 (HTML5-Specific Elements)</h2>
+            <p>تُضيف HTML5 مجموعة من العناصر الجديدة التي تُسهل التعامل مع البيانات وإنشاء محتوى أكثر تفاعلية.</p>
 
-    <h3>أمثلة على عناصر HTML5:</h3>
-    <ul>
-        <li><code>&lt;time&gt;</code>: يُستخدم لتمثيل الوقت أو التاريخ.</li>
-        <li><code>&lt;progress&gt;</code>: يُستخدم لعرض تقدم عملية.</li>
-        <li><code>&lt;meter&gt;</code>: يُستخدم لعرض قيمة داخل نطاق معين.</li>
-        <li><code>&lt;output&gt;</code>: يُستخدم لعرض نتيجة عملية.</li>
-        <li><code>&lt;figure&gt;</code>: يُستخدم لعرض محتوى بصري مع توضيح.</li>
-        <li><code>&lt;figcaption&gt;</code>: يُستخدم لتوفير وصف لمحتوى <code>&lt;figure&gt;</code>.</li>
-    </ul>
+            <h3>أمثلة على عناصر HTML5:</h3>
+            <ul>
+                <li><code>&lt;time&gt;</code>: يُستخدم لتمثيل الوقت أو التاريخ.</li>
+                <li><code>&lt;progress&gt;</code>: يُستخدم لعرض تقدم عملية.</li>
+                <li><code>&lt;meter&gt;</code>: يُستخدم لعرض قيمة داخل نطاق معين.</li>
+                <li><code>&lt;output&gt;</code>: يُستخدم لعرض نتيجة عملية.</li>
+                <li><code>&lt;figure&gt;</code>: يُستخدم لعرض محتوى بصري مع توضيح.</li>
+                <li><code>&lt;figcaption&gt;</code>: يُستخدم لتوفير وصف لمحتوى <code>&lt;figure&gt;</code>.</li>
+            </ul>
 
-    <h3>مثال على استخدام عنصر <code>&lt;time&gt;</code>:</h3>
-    <pre><code>&lt;time datetime="2023-07-21"&gt;21 يوليو 2023&lt;/time&gt;</code></pre>
+            <h3>مثال على استخدام عنصر <code>&lt;time&gt;</code>:</h3>
+            <pre><code>&lt;time datetime="2023-07-21"&gt;21 يوليو 2023&lt;/time&gt;</code></pre>
 
-    <h3>مثال على استخدام عنصر <code>&lt;progress&gt;</code>:</h3>
-    <pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre>
-    
-    <h3>مثال على استخدام عنصر <code>&lt;meter&gt;</code>:</h3>
-    <pre><code>&lt;meter min="0" max="100" value="50"&gt;50&lt;/meter&gt;</code></pre>
-    
-    <h3>مثال على استخدام عنصر <code>&lt;output&gt;</code>:</h3>
-    <pre><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></pre>
-    
-    <h3>مثال على استخدام عنصر <code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code>:</h3>
-    <pre><code>&lt;figure&gt;
+            <h3>مثال على استخدام عنصر <code>&lt;progress&gt;</code>:</h3>
+            <pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre>
+            
+            <h3>مثال على استخدام عنصر <code>&lt;meter&gt;</code>:</h3>
+            <pre><code>&lt;meter min="0" max="100" value="50"&gt;50&lt;/meter&gt;</code></pre>
+            
+            <h3>مثال على استخدام عنصر <code>&lt;output&gt;</code>:</h3>
+            <pre><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></pre>
+            
+            <h3>مثال على استخدام عنصر <code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code>:</h3>
+            <pre><code>&lt;figure&gt;
     &lt;img src="image.jpg" alt="صورة توضيحية"&gt;
     &lt;figcaption&gt;هذا وصف للصورة.&lt;/figcaption&gt;
 &lt;/figure&gt;</code></pre>
+        </section>
+    </main>
 
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--primary-color);">
+        <p>© 2024 دليل HTML الشامل. جميع الحقوق محفوظة.</p>
+    </footer>
 </body>
 </html>

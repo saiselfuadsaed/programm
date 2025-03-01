@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML المتقدمة</title>
+    <meta name="keywords" content="HTML, عناصر متقدمة, دلالية, وسائط متعددة, إطارات, رسوم, تفاعلية">
+    <meta name="description" content="دليل شامل للعناصر المتقدمة في HTML مع أمثلة عملية">
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #90e0ef;
+            --accent: #0077b6;
+            --text: #2d3436;
+            --bg: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        .dark-mode {
+            --primary: #023e8a;
+            --secondary: #0077b6;
+            --accent: #00b4d8;
+            --text: #f8f9fa;
+            --bg: #212529;
+            --code-bg: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 80%;
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2, h3 {
+            color: var(--accent);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin: 1.5rem 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            direction: ltr;
+            display: block;
+        }
+
+        .theme-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>العناصر المتقدمة في HTML</h1>
+
+        <div class="nav-buttons">
+            <a class="nav-button" href="page1.html">🏠 الصفحة الرئيسية</a>
+            <a class="nav-button" href="page9.html">→ الدرس التالي</a>
+            <a class="nav-button" href="page7.html">← الدرس السابق</a>
+        </div>
+
+        <h2>العناصر الدلالية (Semantic Elements)</h2>
+        <p>العناصر الدلالية تضيف معنى دلاليًا للمحتوى، مما يُسهل على محركات البحث والمستخدمين فهم هيكل الصفحة.</p>
+        <h3>مثال على العناصر الدلالية:</h3>
+        <pre><code>&lt;header&gt;
+    &lt;h1&gt;مرحبًا بكم في موقعنا&lt;/h1&gt;
+&lt;/header&gt;
+
+&lt;footer&gt;
+    &lt;p&gt;حقوق الطبع والنشر © 2023&lt;/p&gt;
+&lt;/footer&gt;
+
+&lt;nav&gt;
+    &lt;ul&gt;
+        &lt;li&gt;&lt;a href="#home"&gt;الرئيسية&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#services"&gt;الخدمات&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
+
+        <h2>العناصر المتعددة الوسائط (Multimedia Elements)</h2>
+        <p>تُستخدم لدمج الملفات الصوتية والفيديو في صفحات الويب.</p>
+        <h3>مثال على عنصر &lt;audio&gt;:</h3>
+        <pre><code>&lt;audio controls&gt;
+    &lt;source src="audio.mp3" type="audio/mp3"&gt;
+    متصفحك لا يدعم الصوت.
+&lt;/audio&gt;</code></pre>
+
+        <h3>مثال على عنصر &lt;video&gt;:</h3>
+        <pre><code>&lt;video width="320" height="240" controls&gt;
+    &lt;source src="movie.mp4" type="video/mp4"&gt;
+    متصفحك لا يدعم الفيديو.
+&lt;/video&gt;</code></pre>
+
+        <h2>الإطارات (Frames)</h2>
+        <p>تُستخدم لدمج محتوى من صفحة أخرى داخل الصفحة الحالية.</p>
+        <h3>مثال على عنصر &lt;iframe&gt;:</h3>
+        <pre><code>&lt;iframe src="https://www.example.com" width="600" height="400"&gt;&lt;/iframe&gt;</code></pre>
+
+        <h2>الرسوم (Graphics)</h2>
+        <p>تُستخدم لإنشاء رسومات متجهة أو رسم الصور باستخدام JavaScript.</p>
+        <h3>مثال على عنصر &lt;svg&gt;:</h3>
+        <pre><code>&lt;svg width="100" height="100"&gt;
+    &lt;circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" /&gt;
+&lt;/svg&gt;</code></pre>
+
+        <h3>مثال على عنصر &lt;canvas&gt;:</h3>
+        <pre><code>&lt;canvas id="myCanvas" width="200" height="200"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+    var c = document.getElementById("myCanvas");
+    var ctx = c.getContext("2d");
+    ctx.fillStyle = "#FF0000";
+    ctx.fillRect(0, 0, 150, 75);
+&lt;/script&gt;</code></pre>
+
+        <h2>العناصر التفاعلية (Interactive Elements)</h2>
+        <p>تُستخدم لإنشاء محتوى يمكن فتحه وإغلاقه من قبل المستخدم.</p>
+        <h3>مثال على عنصر &lt;details&gt;:</h3>
+        <pre><code>&lt;details&gt;
+    &lt;summary&gt;انقر لعرض التفاصيل&lt;/summary&gt;
+    &lt;p&gt;هذه بعض التفاصيل المخفية.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+        <h3>مثال على عنصر &lt;summary&gt;:</h3>
+        <pre><code>&lt;details&gt;
+    &lt;summary&gt;عرض المزيد&lt;/summary&gt;
+    &lt;p&gt;هنا بعض المعلومات الإضافية.&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+
+        <h2>عناصر المجموعات (Grouping Elements)</h2>
+        <p>تُستخدم لتجميع العناصر معًا لسهولة الإدارة والتنسيق.</p>
+        <h3>مثال على عنصر &lt;div&gt;:</h3>
+        <pre><code>&lt;div&gt;
+    &lt;h2&gt;قسم المحتوى&lt;/h2&gt;
+    &lt;p&gt;هذا نص داخل قسم.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>مثال على عنصر &lt;span&gt;:</h3>
+        <pre><code>&lt;p&gt;هذا نص مع &lt;span&gt;تأكيد&lt;/span&gt; داخل الفقرة.&lt;/p&gt;</code></pre>
+    </div>
+
+    <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+</body>
+</html>

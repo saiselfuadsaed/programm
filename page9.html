@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عناصر النصوص وعناصر HTML5</title>
+    <style>
+        body {
+            direction: rtl;
+            text-align: right;
+        }
+        h1, h2, h3, h4 {
+            text-align: center;
+        }
+        code {
+            background-color: #f4f4f4;
+            padding: 0.2em 0.4em;
+            border-radius: 4px;
+            font-size: 0.9em;
+            color: #c7254e;
+            background-color: #f9f2f4;
+        }
+        pre {
+            background-color: #f4f4f4;
+            padding: 1em;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        h1{border:solid 10px;
+        color: rgb(127, 129, 129);
+        text-align: center;
+        background-color: aqua;
+        border-top: ;
+
+       }
+       .nav-button {
+            background-color: deepskyblue; /* اللون الجميل بشكل دائم */
+            color: black; /* اللون الأسود */
+            padding: 10px 20px;
+            margin: 20px; /* زيادة التباعد بين الأزرار */
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            box-shadow: 0 0 15px deepskyblue; /* تأثير الإضاءة */
+        }
+        .nav-button:hover {
+            background-color: deepskyblue; /* نفس اللون عند التمرير */
+            box-shadow: 0 0 20px deepskyblue; /* زيادة تأثير الإضاءة عند التمرير */
+        }
+    </style>
+</head>
+<body>
+    <h1>عناصر النصوص وعناصر HTML5 في HTML</h1>
+    <div><a class="nav-button" href="page1.html">الصفحةالرئيسيه</a>
+       
+        <a class="nav-button" href="page8.html">الدرس السابق</a>
+
+    </div>
+
+    <h2>عناصر النصوص (Text Elements)</h2>
+    <p>تُستخدم عناصر النصوص لتنسيق النصوص داخل الصفحة.</p>
+    
+    <h3>أمثلة على عناصر النصوص:</h3>
+    <ul>
+        <li><code>&lt;b&gt;</code>: يُستخدم لجعل النص عريضًا.</li>
+        <li><code>&lt;i&gt;</code>: يُستخدم لجعل النص مائلًا.</li>
+        <li><code>&lt;strong&gt;</code>: يُستخدم لجعل النص عريضًا مع معنى أقوى.</li>
+        <li><code>&lt;em&gt;</code>: يُستخدم لجعل النص مائلًا مع معنى أقوى.</li>
+        <li><code>&lt;small&gt;</code>: يُستخدم لجعل النص صغيرًا.</li>
+        <li><code>&lt;mark&gt;</code>: يُستخدم لتحديد نص مميز أو مُبرز.</li>
+    </ul>
+
+    <h3>مثال على استخدام العناصر النصية:</h3>
+    <pre><code>&lt;b&gt;نص عريض&lt;/b&gt;
+&lt;i&gt;نص مائل&lt;/i&gt;
+&lt;strong&gt;نص مهم&lt;/strong&gt;
+&lt;em&gt;نص مؤكد&lt;/em&gt;
+&lt;small&gt;نص صغير&lt;/small&gt;
+&lt;mark&gt;نص مميز&lt;/mark&gt;</code></pre>
+
+    <h2>عناصر خاصة بالـHTML5 (HTML5-Specific Elements)</h2>
+    <p>تُضيف HTML5 مجموعة من العناصر الجديدة التي تُسهل التعامل مع البيانات وإنشاء محتوى أكثر تفاعلية.</p>
+
+    <h3>أمثلة على عناصر HTML5:</h3>
+    <ul>
+        <li><code>&lt;time&gt;</code>: يُستخدم لتمثيل الوقت أو التاريخ.</li>
+        <li><code>&lt;progress&gt;</code>: يُستخدم لعرض تقدم عملية.</li>
+        <li><code>&lt;meter&gt;</code>: يُستخدم لعرض قيمة داخل نطاق معين.</li>
+        <li><code>&lt;output&gt;</code>: يُستخدم لعرض نتيجة عملية.</li>
+        <li><code>&lt;figure&gt;</code>: يُستخدم لعرض محتوى بصري مع توضيح.</li>
+        <li><code>&lt;figcaption&gt;</code>: يُستخدم لتوفير وصف لمحتوى <code>&lt;figure&gt;</code>.</li>
+    </ul>
+
+    <h3>مثال على استخدام عنصر <code>&lt;time&gt;</code>:</h3>
+    <pre><code>&lt;time datetime="2023-07-21"&gt;21 يوليو 2023&lt;/time&gt;</code></pre>
+
+    <h3>مثال على استخدام عنصر <code>&lt;progress&gt;</code>:</h3>
+    <pre><code>&lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;</code></pre>
+    
+    <h3>مثال على استخدام عنصر <code>&lt;meter&gt;</code>:</h3>
+    <pre><code>&lt;meter min="0" max="100" value="50"&gt;50&lt;/meter&gt;</code></pre>
+    
+    <h3>مثال على استخدام عنصر <code>&lt;output&gt;</code>:</h3>
+    <pre><code>&lt;output name="result"&gt;42&lt;/output&gt;</code></pre>
+    
+    <h3>مثال على استخدام عنصر <code>&lt;figure&gt;</code> و<code>&lt;figcaption&gt;</code>:</h3>
+    <pre><code>&lt;figure&gt;
+    &lt;img src="image.jpg" alt="صورة توضيحية"&gt;
+    &lt;figcaption&gt;هذا وصف للصورة.&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+
+</body>
+</html>

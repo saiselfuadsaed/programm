@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الجداول في HTML</title>
+    <meta name="keywords" content="HTML, جداول, table, tr, td">
+    <meta name="description" content="دليل شامل لإنشاء الجداول في HTML مع أمثلة عملية">
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #90e0ef;
+            --accent: #0077b6;
+            --text: #2d3436;
+            --bg: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        .dark-mode {
+            --primary: #023e8a;
+            --secondary: #0077b6;
+            --accent: #00b4d8;
+            --text: #f8f9fa;
+            --bg: #212529;
+            --code-bg: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 80%;
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2, h3 {
+            color: var(--accent);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin: 1.5rem 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            direction: ltr;
+            display: block;
+        }
+
+        .theme-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        li {
+            padding: 0.5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>الجداول في HTML</h1>
+
+        <div class="nav-buttons">
+            <a class="nav-button" href="page1.html">
+                🏠 الصفحة الرئيسية
+            </a>
+            <a class="nav-button" href="page5.html">
+                → العناوين
+            </a>
+            
+        </div>
+
+        <h2>الجداول (Tables)</h2>
+        <p>تُستخدم الجداول لتنظيم البيانات في شكل هيكلي يمكن تصفحه بسهولة:</p>
+
+        <h3>مثال على إنشاء جدول:</h3>
+        <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;العنوان 1&lt;/th&gt;
+        &lt;th&gt;العنوان 2&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;البيانات 1&lt;/td&gt;
+        &lt;td&gt;البيانات 2&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;البيانات 3&lt;/td&gt;
+        &lt;td&gt;البيانات 4&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h3>السمات الشائعة:</h3>
+        <ul>
+            <li><code>&lt;table&gt;</code>: إنشاء الجدول</li>
+            <li><code>&lt;tr&gt;</code>: صف الجدول</li>
+            <li><code>&lt;th&gt;</code>: خلية الرأس</li>
+            <li><code>&lt;td&gt;</code>: خلية البيانات</li>
+            <li><code>border</code>: تحديد الحدود</li>
+        </ul>
+
+        <h3>جدول مع حدود:</h3>
+        <pre><code>&lt;table border="1"&gt;
+    &lt;tr&gt;
+        &lt;th&gt;المنتج&lt;/th&gt;
+        &lt;th&gt;السعر&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;كمبيوتر&lt;/td&gt;
+        &lt;td&gt;1000&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;هاتف&lt;/td&gt;
+        &lt;td&gt;500&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+
+        <h2>أمثلة عملية</h2>
+
+        <h3>جدول بسيط:</h3>
+        <pre><code>&lt;table&gt;
+    &lt;tr&gt;
+        &lt;th&gt;الاسم&lt;/th&gt;
+        &lt;th&gt;العمر&lt;/th&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;أحمد&lt;/td&gt;
+        &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;سارة&lt;/td&gt;
+        &lt;td&gt;30&lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;</code></pre>
+    </div>
+
+    <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+</body>
+</html>

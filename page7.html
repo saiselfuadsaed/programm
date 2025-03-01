@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>بيانات التعريف</title>
+    <meta name="keywords" content="HTML, بيانات التعريف, meta, title, تعلم البرمجة">
+    <meta name="description" content="دليل شامل لاستخدام بيانات التعريف في HTML مع أمثلة عملية">
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #90e0ef;
+            --accent: #0077b6;
+            --text: #2d3436;
+            --bg: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        .dark-mode {
+            --primary: #023e8a;
+            --secondary: #0077b6;
+            --accent: #00b4d8;
+            --text: #f8f9fa;
+            --bg: #212529;
+            --code-bg: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 80%;
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2, h3 {
+            color: var(--accent);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin: 1.5rem 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            direction: ltr;
+            display: block;
+        }
+
+        .theme-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>بيانات التعريف في HTML</h1>
+
+        <div class="nav-buttons">
+            <a class="nav-button" href="page1.html">🏠 الصفحة الرئيسية</a>
+            <a class="nav-button" href="page8.html">→ الدرس التالي</a>
+            <a class="nav-button" href="page6.html">← الدرس السابق</a>
+        </div>
+
+        <h2>&lt;title&gt;</h2>
+        <p>يُستخدم لتحديد عنوان الصفحة الذي يظهر في شريط العنوان للمتصفح.</p>
+        <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;مثال على عنوان الصفحة&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;مرحبا بالعالم!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        
+        <h2>&lt;meta&gt;</h2>
+        <p>تحتوي عناصر &lt;meta&gt; على معلومات وصفية عن الصفحة، مثل الوصف والكلمات المفتاحية، وتحديد نوع وترميز المحتوى.</p>
+        
+        <h3>استخدامات `<meta>`:</h3>
+        <ul>
+            <li>تحديد ترميز الأحرف باستخدام `charset`.</li>
+            <li>توفير وصف مختصر للصفحة باستخدام `name="description"`.</li>
+            <li>تحديد الكلمات المفتاحية للصفحة باستخدام `name="keywords"`.</li>
+            <li>تحديد إعدادات الرؤية للمحتوى على الأجهزة المحمولة باستخدام `name="viewport"`.</li>
+            <li>ربط الصفحة بمؤلف المحتوى باستخدام `name="author"`.</li>
+        </ul>
+        
+        <h3>أمثلة على `meta`:</h3>
+        <h4>مثال على تحديد ترميز الأحرف:</h4>
+        <pre><code>&lt;meta charset="UTF-8"&gt;</code></pre>
+        
+        <h4>مثال على الوصف والكلمات المفتاحية:</h4>
+        <pre><code>&lt;meta name="description" content="هذه صفحة تعريفية عن HTML."&gt;
+&lt;meta name="keywords" content="HTML, CSS, JavaScript, برمجة"&gt;</code></pre>
+        
+        <h4>مثال على إعدادات الرؤية:</h4>
+        <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</code></pre>
+        
+        <h4>مثال على رابط المؤلف:</h4>
+        <pre><code>&lt;meta name="author" content="اسم المؤلف"&gt;</code></pre>
+        
+        <h2>الإيجابيات والسلبيات</h2>
+        
+        <h3>الإيجابيات:</h3>
+        <ul>
+            <li>تحسين أداء الموقع على الأجهزة المحمولة باستخدام إعدادات الرؤية.</li>
+            <li>تحسين ترتيب الموقع في نتائج محركات البحث باستخدام الوصف والكلمات المفتاحية.</li>
+            <li>توفير معلومات إضافية للمستخدمين ومحركات البحث.</li>
+        </ul>
+        
+        <h3>السلبيات:</h3>
+        <ul>
+            <li>يمكن أن تكون الكلمات المفتاحية قديمة وغير فعالة لتحسين SEO (البحث الأمثل لمحركات البحث).</li>
+            <li>قد يؤدي الاستخدام الزائد لعناصر `meta` إلى بطء في تحميل الصفحة إذا كانت غير منظمة بشكل جيد.</li>
+        </ul>
+    </div>
+
+    <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+</body>
+</html>

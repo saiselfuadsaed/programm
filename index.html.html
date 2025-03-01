@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مبرمجو المستقبل</title>
+    <meta name="keywords" content="برمجة، HTML، CSS، جافا سكريبت، تعلم البرمجة">
+    
+    <style>
+        :root {
+            --bg-color: #f0f8ff;
+            --text-color: #1a1a1a;
+            --primary-color: #1e90ff;
+            --code-bg: #e3f2fd;
+            --header-bg: linear-gradient(90deg, #71d1fd, #4a90e2);
+            --box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .dark-theme {
+            --bg-color: #1a1a1a;
+            --text-color: #ffffff;
+            --primary-color: #4a90e2;
+            --code-bg: #2d2d2d;
+            --header-bg: linear-gradient(90deg, #2d2d2d, #1a1a1a);
+            --box-shadow: 0 2px 5px rgba(255,255,255,0.1);
+        }
+
+        body {
+            direction: rtl;
+            text-align: right;
+            font-size: 18px;
+            margin: 0;
+            padding: 20px;
+            background: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        header {
+            padding: 2rem;
+            background: var(--header-bg);
+            color: white;
+            text-align: center;
+            margin-bottom: 2rem;
+            border-radius: 15px;
+        }
+
+        .moving-box {
+            width: 100%;
+            padding: 15px 0;
+            position: relative;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+        .moving-text {
+            display: inline-block;
+            animation: move 8s infinite linear;
+            font-size: 2em;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            white-space: nowrap;
+            color: var(--text-color);
+        }
+
+        @keyframes move {
+            0% { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--box-shadow);
+            border: 2px solid transparent;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(30, 144, 255, 0.4);
+        }
+
+        /* زر تبديل الثيم */
+        .theme-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: var(--box-shadow);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
+
+        /* بقية الأنماط */
+        code {
+            background: var(--code-bg);
+            padding: 0.3em 0.6em;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px 0;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            max-width: 800px;
+            margin: 20px auto;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 15px;
+            background: var(--bg-color);
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+    </style>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // إدارة الوضع المظلم
+            const themeToggle = document.createElement('button');
+            themeToggle.className = 'theme-toggle';
+            themeToggle.innerHTML = '🌙';
+            document.body.prepend(themeToggle);
+
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+                themeToggle.innerHTML = savedTheme === 'dark-theme' ? '☀️' : '🌙';
+            }
+
+            themeToggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                const isDark = document.body.classList.contains('dark-theme');
+                themeToggle.innerHTML = isDark ? '☀️' : '🌙';
+                localStorage.setItem('theme', isDark ? 'dark-theme' : '');
+            });
+
+            // تأثيرات الحركة للنص
+            const movingText = document.querySelector('.moving-text');
+            setInterval(() => {
+                movingText.style.transform = 'translateY(-2px)';
+                setTimeout(() => movingText.style.transform = 'translateY(2px)', 50);
+            }, 3000);
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>أكاديمية مبرمجي المستقبل 🚀</h1>
+    </header>
+
+    <div class="moving-box">
+        <div class="moving-text">مبرمجون المستقبل | Future Programmers</div>
+    </div>
+
+    <div class="nav-buttons">
+        <a class="nav-button" href="نماذج.html">نماذج</a>
+        <a class="nav-button" href="جرافيك.html">جرافيك</a>
+        <a class="nav-button" href="بيانات التعريف.html">بيانات التعريف</a>
+        <a class="nav-button" href="page4.html">الجداول،</a>
+        <a class="nav-button" href="page5.html">العناوين</a>
+        <a class="nav-button" href="الروابط.html">الروابط</a>
+        <a class="nav-button" href="page3.html">القوائم،</a>
+        <a class="nav-button" href="عناصر النصوص.html">عناصر النصوص</a>
+        <a class="nav-button" href="page2.html">العناصر الهيكليه</a>
+    </div>
+
+   
+        <!-- بقية العناصر النقطية -->
+    </ul>
+    <h1>مقدمة عن HTML</h1>
+    <ul>
+        <li>
+            <code>HTML (HyperText Markup Language) هي لغة ترميز النصوص التشعبية، وتعد الأساس الذي يعتمد عليه بناء صفحات الويب.</code>
+        </li>
+        <li>
+            <code>تستخدم HTML لتحديد هيكل المحتوى داخل صفحة الويب عبر "العلامات" أو "التاجز".</code>
+        </li>
+        <li>
+            <code>يتم استخدام HTML لتنظيم النصوص، الصور، الروابط، والجداول، بالإضافة إلى عناصر متعددة مثل النماذج والفيديو والصوت.</code>
+        </li>
+        <li>
+            <code>HTML تتكون من مجموعة من العناصر التي تتعاون مع تقنيات أخرى مثل CSS (لتنسيق المظهر) و JavaScript (لإضافة التفاعلية) لبناء صفحات ويب ديناميكية وجذابة.</code>
+        </li>
+        <li>
+          <code>يمكن من خلالها تحديد العناوين، الفقرات، القوائم، الجداول، والنماذج بشكل منظم، مما يسهل على المتصفح عرضها للمستخدم بشكل مناسب.</code>
+        </li>
+        <li>
+            <code>من خلال تعلم HTML، يمكنك إنشاء الصفحات التي تشكل الأساس لأي موقع ويب، لتكون بذلك حجر الزاوية في تصميم وتطوير واجهات الإنترنت.</code>
+        </li>
+    </ul>
+
+</body>
+</html>

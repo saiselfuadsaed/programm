@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>العناوين والفقرات</title>
+    <meta name="keywords" content="HTML, عناوين, فقرات, تعلم البرمجة">
+    <meta name="description" content="دليل شامل لاستخدام العناوين والفقرات في HTML مع أمثلة عملية">
+
+    <style>
+        :root {
+            --primary: #00b4d8;
+            --secondary: #90e0ef;
+            --accent: #0077b6;
+            --text: #2d3436;
+            --bg: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        .dark-mode {
+            --primary: #023e8a;
+            --secondary: #0077b6;
+            --accent: #00b4d8;
+            --text: #f8f9fa;
+            --bg: #212529;
+            --code-bg: #343a40;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+
+        body {
+            direction: rtl;
+            font-family: 'Tajawal', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 80%;
+            font-size: 2rem;
+        }
+
+        .nav-buttons {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .nav-button {
+            background: var(--primary);
+            color: white;
+            padding: 12px 25px;
+            margin: 10px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2, h3 {
+            color: var(--accent);
+            border-right: 4px solid var(--primary);
+            padding-right: 15px;
+            margin: 1.5rem 0;
+        }
+
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        code {
+            font-family: 'Courier New', monospace;
+            color: var(--accent);
+            direction: ltr;
+            display: block;
+        }
+
+        .theme-btn {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            background: var(--primary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.5rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            localStorage.setItem('theme', document.body.classList.contains('dark-mode') ? 'dark' : 'light');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') document.body.classList.add('dark-mode');
+
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>العناوين والفقرات في HTML</h1>
+
+        <div class="nav-buttons">
+            <a class="nav-button" href="page1.html">🏠 الصفحة الرئيسية</a>
+            <a class="nav-button" href="page6.html">→ الدرس التالي</a>
+            <a class="nav-button" href="page4.html">← الدرس السابق</a>
+        </div>
+
+        <h2>العناوين (Headings)</h2>
+        <p>العناوين هي عناصر تُستخدم لتنظيم محتوى الصفحة إلى مستويات هرمية. يتم تحديد العناوين باستخدام العلامات <code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>.</p>
+        <ul>
+            <li><code>&lt;h1&gt;</code> هو أعلى مستوى من العناوين، يُستخدم عادةً للعناوين الرئيسية في الصفحة.</li>
+            <li><code>&lt;h2&gt;</code> هو المستوى التالي، يُستخدم للعناوين الثانوية.</li>
+            <li>المستوى ينخفض تدريجيًا حتى <code>&lt;h6&gt;</code>، الذي يُستخدم للعناوين الأقل أهمية.</li>
+        </ul>
+        <p>أهمية العناوين تكمن في تنظيم وترتيب المحتوى بوضوح، مما يُسهل على القرّاء تصفح الصفحة وفهم الموضوعات المختلفة بسرعة. بالإضافة إلى ذلك، العناوين تُعتبر هامة لمحركات البحث (SEO) لأنها تُساعد في تحديد محتوى الصفحة وترتيبها تصاعديًا.</p>
+        
+        <h2>الفقرات (Paragraphs)</h2>
+        <p>الفقرات تُستخدم لكتابة النصوص في الصفحة. يتم تضمين النص بداخل علامة <code>&lt;p&gt;</code>، التي تُعتبر عنصرًا حاويًا يبدأ وينتهي عند الفقرة.</p>
+        <ul>
+            <li>تسمح الفقرات بتقسيم النصوص إلى وحدات منفصلة، مما يخلق بنية قابلة للقراءة والتصفح.</li>
+            <li>الفقرات يمكن أن تحتوي على نصوص عادية، روابط، صور، وحتى عناصر أخرى مدمجة.</li>
+        </ul>
+        <p>استخدام الفقرات يُسهل على القرّاء متابعة النصوص بدون عناء، ويُحسن من ترتيبه بشكل انسيابي.</p>
+        
+        <h2>أمثلة:</h2>
+        
+        <h3>استخدام العناوين</h3>
+        <p>العناوين تُستخدم لتنظيم النصوص إلى مستويات مختلفة. إليك مثال لكل مستوى من <code>&lt;h1&gt;</code> إلى <code>&lt;h6&gt;</code>:</p>
+        <pre><code>&lt;h1&gt;هذا عنوان H1&lt;/h1&gt;
+&lt;h2&gt;هذا عنوان H2&lt;/h2&gt;
+&lt;h3&gt;هذا عنوان H3&lt;/h3&gt;
+&lt;h4&gt;هذا عنوان H4&lt;/h4&gt;
+&lt;h5&gt;هذا عنوان H5&lt;/h5&gt;
+&lt;h6&gt;هذا عنوان H6&lt;/h6&gt;</code></pre>
+        
+        <h3>استخدام الفقرات</h3>
+        <p>الفقرات تُستخدم لإضافة نصوص في الصفحة. يمكنك استخدام علامة <code>&lt;p&gt;</code> لبدء وإنهاء فقرة:</p>
+        <pre><code>&lt;p&gt;هذه فقرة نصية توضح كيفية استخدام عنصر الفقرة في HTML.&lt;/p&gt;</code></pre>
+        
+        <h3>أمثلة عملية على العناوين والفقرات</h3>
+        
+        <h4>مثال على تنظيم النصوص باستخدام العناوين:</h4>
+        <pre><code>&lt;h1&gt;العنوان الرئيسي&lt;/h1&gt;
+&lt;p&gt;هذه فقرة تحت العنوان الرئيسي.&lt;/p&gt;
+&lt;h2&gt;العنوان الفرعي الأول&lt;/h2&gt;
+&lt;p&gt;هذه فقرة تحت العنوان الفرعي الأول.&lt;/p&gt;
+&lt;h3&gt;العنوان الفرعي الثاني&lt;/h3&gt;
+&lt;p&gt;هذه فقرة تحت العنوان الفرعي الثاني.&lt;/p&gt;</code></pre>
+        
+        <h4>مثال على فصل الفقرات:</h4>
+        <pre><code>&lt;p&gt;هذه الفقرة الأولى.&lt;/p&gt;
+&lt;p&gt;هذه الفقرة الثانية.&lt;/p&gt;
+&lt;p&gt;هذه الفقرة الثالثة.&lt;/p&gt;</code></pre>
+    </div>
+
+    <button class="theme-btn" onclick="toggleTheme()">🌓</button>
+</body>
+</html>

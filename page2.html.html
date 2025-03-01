@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل العناصر الهيكلية في HTML</title>
+    <meta name="keywords" content="HTML, تعلم البرمجة, تطوير الويب, عناصر هيكلية, دليل HTML">
+    <meta name="description" content="دليل شامل لعناصر HTML الهيكلية مع أمثلة عملية وتطبيقات تفاعلية">
+
+    <!-- تنسيقات CSS -->
+    <style>
+        :root {
+            --primary-color: #00b4d8;
+            --secondary-color: #90e0ef;
+            --accent-color: #0077b6;
+            --text-color: #2d3436;
+            --bg-color: #f8f9fa;
+            --code-bg: #e9ecef;
+        }
+
+        /* وضع الظلام */
+        .dark-theme {
+            --primary-color: #023e8a;
+            --secondary-color: #0077b6;
+            --accent-color: #00b4d8;
+            --text-color: #f8f9fa;
+            --bg-color: #212529;
+            --code-bg: #343a40;
+        }
+
+        body {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Tajawal', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.8;
+        }
+
+        /* تنسيق العنوان الرئيسي */
+        h1 {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            text-align: center;
+            margin: 2rem auto;
+            max-width: 90%;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        /* تنسيق العناوين الفرعية */
+        h2, h3 {
+            color: var(--accent-color);
+            border-right: 4px solid var(--primary-color);
+            padding-right: 15px;
+            margin-top: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        /* تنسيق الأزرار */
+        .nav-button {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            margin: 15px;
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 180, 216, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* تأثير التوهج للأزرار */
+        .nav-button::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, 
+                transparent, 
+                rgba(255,255,255,0.3), 
+                transparent
+            );
+            transform: rotate(45deg);
+            animation: buttonGlow 3s infinite linear;
+        }
+
+        /* تنسيق أكواد الأمثلة */
+        pre {
+            background: var(--code-bg);
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            overflow-x: auto;
+            direction: ltr;
+            text-align: left;
+        }
+
+        code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.95rem;
+            color: var(--accent-color);
+        }
+
+        /* زر تبديل الثيم */
+        .theme-toggle {
+            position: fixed;
+            left: 20px;
+            top: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        /* أنيميشن التوهج */
+        @keyframes buttonGlow {
+            0% { transform: rotate(45deg) translateX(-150%); }
+            100% { transform: rotate(45deg) translateX(150%); }
+        }
+
+        /* تأثيرات الhover */
+        .nav-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 20px rgba(0, 180, 216, 0.5);
+        }
+
+        h2:hover, h3:hover {
+            transform: translateX(10px);
+            color: var(--primary-color);
+        }
+
+        /* تصميم متجاوب */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8rem;
+                padding: 1rem;
+            }
+            
+            .nav-button {
+                display: block;
+                margin: 10px auto;
+                width: 80%;
+            }
+        }
+    </style>
+
+    <!-- الشيفرات البرمجية JavaScript -->
+    <script>
+        // تهيئة الصفحة عند التحميل
+        document.addEventListener('DOMContentLoaded', () => {
+            // تحميل وضع الثيم المحفوظ
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                document.body.classList.add(savedTheme);
+                document.querySelector('.theme-toggle').textContent = savedTheme === 'dark-theme' ? '☀️' : '🌙';
+            }
+
+            // إضافة تأثيرات للعناوين
+            document.querySelectorAll('h2, h3').forEach(heading => {
+                heading.addEventListener('mouseover', () => {
+                    heading.style.transform = 'translateX(10px)';
+                });
+                
+                heading.addEventListener('mouseout', () => {
+                    heading.style.transform = 'translateX(0)';
+                });
+            });
+
+            // إدارة الأحداث للأزرار
+            document.querySelectorAll('.nav-button').forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // تأثير رش الماء
+                    const ripple = document.createElement('div');
+                    ripple.style.cssText = `
+                        position: absolute;
+                        width: 20px;
+                        height: 20px;
+                        background: rgba(255,255,255,0.5);
+                        border-radius: 50%;
+                        transform: translate(-50%, -50%);
+                        animation: ripple 0.6s linear;
+                    `;
+                    
+                    const rect = this.getBoundingClientRect();
+                    ripple.style.left = `${e.clientX - rect.left}px`;
+                    ripple.style.top = `${e.clientY - rect.top}px`;
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => window.location.href = this.href, 300);
+                });
+            });
+        });
+
+        // تبديل وضع الثيم
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const isDark = document.body.classList.contains('dark-theme');
+            localStorage.setItem('theme', isDark ? 'dark-theme' : '');
+            document.querySelector('.theme-toggle').textContent = isDark ? '☀️' : '🌙';
+        }
+    </script>
+</head>
+
+<body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+
+    <header>
+        <h1>الدليل الشامل للعناصر الهيكلية في HTML</h1>
+    </header>
+
+    <nav style="text-align: center; margin: 30px 0;">
+        <a class="nav-button" href="page1.html">🏠 الصفحة الرئيسية</a>
+        <a class="nav-button" href="page3.html">📐القوائم</a>
+        <a class="nav-button" href="media.html">🎬 الوسائط</a>
+    </nav>
+
+    <main style="max-width: 1000px; margin: 0 auto;">
+        <!-- قسم العنصر html -->
+        <section>
+            <h2>&lt;html&gt; - العنصر الجذري</h2>
+            <p>الوعاء الرئيسي الذي يحتوي جميع عناصر الصفحة، يجب أن يحتوي على:</p>
+            <ul>
+                <li>السمة lang لتحديد اللغة</li>
+                <li>عنصر head للمعلومات الوصفية</li>
+                <li>عنصر body للمحتوى الرئيسي</li>
+            </ul>
+            <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="ar"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;مثال&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;مرحبًا بالعالم!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </section>
+
+        <!-- قسم العنصر head -->
+        <section>
+            <h2>&lt;head&gt; - معلومات الصفحة</h2>
+            <p>يحتوي على المعلومات الوصفية التي لا تظهر للمستخدم لكنها ضرورية للمتصفح ومحركات البحث:</p>
+            <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;عنوان الصفحة&lt;/title&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+  &lt;script src="script.js" defer&gt;&lt;/script&gt;
+&lt;/head&gt;</code></pre>
+        </section>
+
+        <!-- قسم العنصر body -->
+        <section>
+            <h2>&lt;body&gt; - محتوى الصفحة</h2>
+            <p>يحتوي على جميع العناصر المرئية للزائر:</p>
+            <pre><code>&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;عنوان الموقع&lt;/h1&gt;
+  &lt;/header&gt;
+  
+  &lt;main&gt;
+    &lt;article&gt;
+      &lt;h2&gt;مقال رئيسي&lt;/h2&gt;
+      &lt;p&gt;محتوى المقال...&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/main&gt;
+  
+  &lt;footer&gt;
+    &lt;p&gt;حقوق النشر © 2024&lt;/p&gt;
+  &lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+        </section>
+
+        <!-- أقسام إضافية -->
+        <section>
+            <h3>العناصر الأساسية الأخرى</h3>
+            <div class="code-example">
+                <h4>&lt;!DOCTYPE html&gt;</h4>
+                <p>إعلان نوع المستند لضمان التفسير الصحيح</p>
+            </div>
+
+            <div class="code-example">
+                <h4>&lt;meta&gt;</h4>
+                <p>وصف بيانات الصفحة للبحث الأمثل (SEO)</p>
+            </div>
+        </section>
+    </main>
+
+    <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid var(--primary-color);">
+        <p>© 2024 دليل HTML الشامل. جميع الحقوق محفوظة.</p>
+    </footer>
+</body>
+</html>

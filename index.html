@@ -1,225 +1,278 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>أكاديمية مبرمجين المستقبل 🚀 | Future Programmers Academy</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>أكاديمية مبرمجين المستقبل 🚀</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body {
-      background-color: #fff0f0;
-      color: #660000;
-      overflow-x: hidden;
-    }
+        body {
+            background-color: #fff0f0;
+            color: #660000;
+            overflow-x: hidden;
+        }
 
-    header {
-      background: linear-gradient(135deg, #ff7f7f, #ff4d4d);
-      color: white;
-      text-align: center;
-      padding: 2rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      opacity: 0;
-      animation: fadeInDown 1s ease forwards;
-    }
+        header {
+            background: linear-gradient(135deg, #ff7f7f, #ff4d4d);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
 
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-    }
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
 
-    .subtitle {
-      font-size: 1.2rem;
-      opacity: 0.9;
-    }
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
 
-    .content {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
+        .content {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
 
-    .intro {
-      background: white;
-      border-radius: 8px;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      line-height: 1.6;
-      opacity: 0;
-      animation: fadeInLeft 1s ease forwards;
-      animation-delay: 1s;
-    }
+        .intro {
+            background: white;
+            border-radius: 8px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            line-height: 1.6;
+        }
 
-    .intro h2 {
-      color: #cc0000;
-      margin-bottom: 1rem;
-      border-bottom: 2px solid #ffe6e6;
-      padding-bottom: 0.5rem;
-    }
+        .intro h2 {
+            color: #cc0000;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #ffe6e6;
+            padding-bottom: 0.5rem;
+        }
 
-    .scroll-menu {
-      overflow-x: auto;
-      white-space: nowrap;
-      padding: 1rem 0;
-      -webkit-overflow-scrolling: touch;
-    }
+        .dropdown {
+    margin-top: 1rem;
+    display: inline-block;
+    animation: fadeInRight 1s ease forwards;
+    animation-delay: 0.5s;
+}
 
-    .scroll-menu::-webkit-scrollbar {
-      height: 6px;
-    }
+        .dropdown-btn {
+            background: white;
+            color: #cc0000;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
 
-    .scroll-menu::-webkit-scrollbar-thumb {
-      background: #ff4d4d;
-      border-radius: 3px;
-    }
+        .dropdown-btn:hover {
+            background: #ffe6e6;
+        }
 
-    .menu-item {
-      display: inline-block;
-      background: white;
-      padding: 1.5rem;
-      margin: 0 0.5rem;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      min-width: 200px;
-      text-align: center;
-      transition: transform 0.3s, box-shadow 0.3s;
-      opacity: 0;
-    }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background: white;
+            min-width: 200px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: right;
+            right: 0;
+            margin-top: 10px;
+        }
 
-    .menu-item:nth-child(1) { animation: fadeInRight 1s ease forwards; animation-delay: 2s; }
-    .menu-item:nth-child(2) { animation: fadeInUp 1s ease forwards; animation-delay: 2.3s; }
-    .menu-item:nth-child(3) { animation: fadeInLeft 1s ease forwards; animation-delay: 2.6s; }
-    .menu-item:nth-child(4) { animation: fadeInRight 1s ease forwards; animation-delay: 2.9s; }
-    .menu-item:nth-child(5) { animation: fadeInUp 1s ease forwards; animation-delay: 3.2s; }
-    .menu-item:nth-child(6) { animation: fadeInLeft 1s ease forwards; animation-delay: 3.5s; }
+        .dropdown-content a {
+            color: #660000;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            transition: all 0.2s;
+        }
 
-    .menu-item:hover {
-      transform: scale(1.05);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
+        .dropdown-content a:hover {
+            background-color: #ffe6e6;
+            color: #cc0000;
+            padding-right: 20px;
+        }
 
-    .menu-item i {
-      font-size: 2rem;
-      color: #ff4d4d;
-      margin-bottom: 1rem;
-      display: block;
-    }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background: #660000;
+            color: white;
+            margin-top: 2rem;
+        }
 
-    .menu-item h3 {
-      color: #cc0000;
-      margin-bottom: 0.5rem;
-    }
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
 
-    footer {
-      text-align: center;
-      padding: 2rem 0;
-      background: #660000;
-      color: white;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-      animation-delay: 4s;
-      margin-top: 2rem;
-    }
+            .dropdown {
+                right: 10px;
+                top: 10px;
+            }
 
-    @media (max-width: 768px) {
-      h1 {
-        font-size: 2rem;
-      }
+            .dropdown-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+  
+  
+  
+  
+  
+  /* تحكم في القائمة الفرعية داخل القائمة الأصلية */
+.dropdown .sub-dropdown {
+  position: relative;
+}
 
-      .menu-item {
-        min-width: 160px;
-        padding: 1rem;
-      }
-    }
+.dropdown .sub-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: right;
+  padding: 12px 16px;
+  color: #660000;
+  font-size: 1rem;
+  cursor: pointer;
+}
 
-    @keyframes fadeInDown {
-      0% { opacity: 0; transform: translateY(-30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+.dropdown .sub-menu {
+  display: none;
+  background: #fff;
+  border-top: 1px solid #eee;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  margin-right: 20px;
+}
 
-    @keyframes fadeInUp {
-      0% { opacity: 0; transform: translateY(30px); }
-      100% { opacity: 1; transform: translateY(0); }
-    }
+.dropdown .sub-dropdown:hover .sub-menu {
+  display: block;
+}
 
-    @keyframes fadeInLeft {
-      0% { opacity: 0; transform: translateX(-30px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
+.dropdown .sub-menu a {
+  padding: 10px 20px;
+  display: block;
+  color: #660000;
+  text-decoration: none;
+}
 
-    @keyframes fadeInRight {
-      0% { opacity: 0; transform: translateX(30px); }
-      100% { opacity: 1; transform: translateX(0); }
-    }
-  </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+.dropdown .sub-menu a:hover {
+  background-color: #ffe6e6;
+}   
+    </style>
 </head>
 <body>
-  
-    
     <header>
-  
-
-  <h1>أكاديمية مبرمجين المستقبل 🚀</h1>
-  <p class="subtitle">Future Programmers Academy</p>
-  <div style="margin-top: 1rem;">
-    <a href="index1.html" style="background:#ff4d4d; color:white; padding:0.6rem 1rem; border-radius:8px; text-decoration:none; margin: 0 0.5rem;">انتقل إلى HTML</a>
-    <a href="#css-section" style="background:#ff4d4d; color:white; padding:0.6rem 1rem; border-radius:8px; text-decoration:none; margin: 0 0.5rem;">انتقل إلى CSS</a>
+      
+      <h1>أكاديمية مبرمجين المستقبل 🚀</h1>
+        <p class="subtitle">Future Programmers Academy</p>
+    </header>
     
-  </div>
-
-  </header>
-
-  <div class="content">
-    <section class="intro">
-      <h2>ما هي البرمجة؟</h2>
-      <p>البرمجة هي عملية كتابة تعليمات وتوجيهات لأجهزة الكمبيوتر لتنفيذ مهام محددة...</p>
-      <p>في أكاديمية مبرمجين المستقبل، نقدم لك المسار الشامل لاكتساب هذه المهارة القوية...</p>
-    </section>
-
-    <h2 style="color: #cc0000; margin-bottom: 1rem;">اختر مسارك التعليمي</h2>
-    <div class="scroll-menu">
-      <div class="menu-item">
-        <i class="fas fa-laptop-code"></i>
-        <h3>أساسيات البرمجة</h3>
-        <p>ابدأ رحلتك مع المفاهيم الأساسية</p>
-      </div>
-      <div class="menu-item">
-        <i class="fab fa-html5"></i>
-        <h3>تطوير الويب</h3>
-        <p>تعلم بناء مواقع وتطبيقات الويب</p>
-      </div>
-      <div class="menu-item">
-        <i class="fab fa-android"></i>
-        <h3>تطبيقات الموبايل</h3>
-        <p>اصنع تطبيقات للهواتف الذكية</p>
-      </div>
-      <div class="menu-item">
-        <i class="fas fa-database"></i>
-        <h3>قواعد البيانات</h3>
-        <p>تعامل مع تخزين وإدارة البيانات</p>
-      </div>
-      <div class="menu-item">
-        <i class="fas fa-robot"></i>
-        <h3>الذكاء الاصطناعي</h3>
-        <p>استكشف عالم الذكاء الاصطناعي</p>
-      </div>
-      <div class="menu-item">
-        <i class="fas fa-gamepad"></i>
-        <h3>تطوير الألعاب</h3>
-        <p>اصنع ألعابك الخاصة</p>
+    
+  <div class="dropdown">
+  <button class="dropdown-btn" onclick="toggleDropdown()">
+    <i class="fas fa-bars"></i> الأقسام
+  </button>
+  <div class="dropdown-content" id="menu">
+    
+    <a href="#"><i class="fas fa-laptop-code"></i> أساسيات البرمجة</a>
+    
+    <div class="sub-dropdown">
+      <button class="sub-btn">
+        <i class="fab fa-html5"></i> تطوير الويب
+      </button>
+      <div class="sub-menu">
+        <a href="index1.html">تعلم HTML</a>
+        <a href="">تعلم CSS</a>
+        <a href="#">تعلم JavaScript</a>
       </div>
     </div>
-  </div>
 
-  <footer>
-    <p>© 2023 أكاديمية مبرمجين المستقبل 🚀 | جميع الحقوق محفوظة</p>
-  </footer>
+    <a href="#"><i class="fab fa-android"></i> تطبيقات الموبايل</a>
+    <a href="#"><i class="fas fa-database"></i> قواعد البيانات</a>
+    <a href="#"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a>
+    <a href="#"><i class="fas fa-gamepad"></i> تطوير الألعاب</a>
+  </div>
+</div>
+        
+
+    
+    
+ <section class="intro">
+  <h2>ما هي البرمجة؟</h2>
+  <p>
+    البرمجة هي لغة العصر الحديث، وأساس كل تقنية نستخدمها في حياتنا اليومية. من التطبيقات على هواتفنا إلى المواقع الإلكترونية، من الذكاء الاصطناعي إلى الألعاب الإلكترونية — كل ذلك يبدأ بسطر كود.
+  </p>
+
+  <h3 style="color: #cc0000; margin-top: 1.5rem;">لماذا نتعلم البرمجة؟</h3>
+  <ul style="list-style: inside; padding-right: 1rem; margin-top: 0.5rem; color: #444;">
+    <li>لأنها تمنحك القدرة على الإبداع وتحويل الأفكار إلى واقع.</li>
+    <li>لأن سوق العمل العالمي يفتح أبوابه للمبرمجين المتميزين.</li>
+    <li>لأنها تطور مهاراتك في التفكير المنطقي وحل المشكلات.</li>
+    <li>ولأنها ببساطة، لغة المستقبل.</li>
+  </ul>
+
+  <h3 style="color: #cc0000; margin-top: 1.5rem;">أنواع البرمجة:</h3>
+  <p>تختلف مجالات البرمجة بحسب الهدف منها، فهناك:</p>
+  <ul style="list-style: inside; padding-right: 1rem; color: #444;">
+    <li><strong>برمجة الويب:</strong> لبناء وتصميم المواقع.</li>
+    <li><strong>برمجة تطبيقات الهاتف:</strong> لتطوير تطبيقات الأندرويد والآيفون.</li>
+    <li><strong>برمجة الذكاء الاصطناعي:</strong> لتعليم الآلات كيف تتصرف وتتفاعل.</li>
+    <li><strong>برمجة الألعاب:</strong> لصناعة تجارب ترفيهية مذهلة.</li>
+    <li><strong>برمجة الأنظمة:</strong> لتطوير أنظمة التشغيل وبرمجيات الحماية.</li>
+  </ul>
+
+  <h3 style="color: #cc0000; margin-top: 1.5rem;">كيف تبدأ؟</h3>
+  <p>
+    ابدأ بتعلم الأساسيات، مثل <strong>HTML</strong> و<strong>CSS</strong> و<strong>JavaScript</strong> إن كنت مهتمًا بالويب، أو <strong>Python</strong> إن أردت تعلم الذكاء الاصطناعي أو الأتمتة. الأهم من كل شيء هو: لا تتوقف عن التعلم.
+  </p>
+
+  <p style="margin-top: 1.5rem; color: #555;">
+    البرمجة ليست مجرد مهنة، بل هي فن، وطريق لبناء المستقبل.
+  </p>
+</section>
+    
+    
+    
+    
+    
+
+    <footer>
+        © 2023 أكاديمية مبرمجين المستقبل 🚀 | جميع الحقوق محفوظة
+    </footer>
+
+    <script>
+        function toggleDropdown() {
+            var menu = document.getElementById("menu");
+            menu.style.display = (menu.style.display === "block") ? "none" : "block";
+        }
+
+        // إغلاق القائمة عند النقر خارجها
+        window.onclick = function(e) {
+            if (!e.target.matches('.dropdown-btn') && !e.target.closest('.dropdown')) {
+                document.getElementById("menu").style.display = "none";
+            }
+        };
+    </script>
 </body>
 </html>

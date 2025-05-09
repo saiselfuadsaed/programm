@@ -259,6 +259,12 @@
                 font-size: 1.5rem;
             }
         }
+        .sub-menu a[style*="background-color: #4CAF50"] {
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 0;
+    border-radius: 4px;
+}
     </style>
 </head>
 <body>
@@ -279,14 +285,30 @@
                     <i class="fab fa-html5"></i> تطوير الويب
                     <i class="fas fa-chevron-left"></i>
                 </button>
+                
                 <div class="sub-menu">
                     <a href="index1.html">تعلم HTML</a>
-                    <a href="">تعلم CSS</a>
-                    <a href="#">تعلم JavaScript</a>
+                    <a href="css.html">تعلم CSS</a>
+                    <a href="java1.html">تعلم JavaScript</a>
                 </div>
             </div>
 
-            <a href="#"><i class="fab fa-android"></i> تطبيقات الموبايل</a>
+            <<div class="sub-dropdown">
+    <button class="sub-btn">
+        <i class="fab fa-android"></i> تطبيقات الهاتف
+        <i class="fas fa-chevron-left"></i>
+    </button>
+    
+    <div class="sub-menu">
+        <a href="dart.html">تعلم لغة دارت</a>
+        <a href="#" style="background-color: #4CAF50; color: white;">إضافي</a>
+        <a href="#">تعلم لغة جافا</a>
+    </div>
+</div>
+
+
+
+
             <a href="#"><i class="fas fa-database"></i> قواعد البيانات</a>
             <a href="#"><i class="fas fa-robot"></i> الذكاء الاصطناعي</a>
             <a href="#"><i class="fas fa-gamepad"></i> تطوير الألعاب</a>

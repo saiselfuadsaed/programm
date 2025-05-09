@@ -7,6 +7,60 @@
     <meta name="keywords" content="برمجة، HTML، CSS، جافا سكريبت، تعلم البرمجة">
     
     <style>
+    
+    
+    /* أنماط القائمة الأفقية */
+.nav-container {
+    width: 100%;
+    overflow-x: auto;
+    margin: 30px 0;
+    padding: 10px 0;
+}
+
+.horizontal-nav {
+    display: flex;
+    gap: 8px;
+    padding: 10px 0;
+    white-space: nowrap;
+    min-width: max-content;
+}
+
+.nav-item {
+    background: var(--primary-color);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    box-shadow: var(--box-shadow);
+    border: 2px solid transparent;
+    font-size: 16px;
+}
+
+.nav-item:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(30, 144, 255, 0.4);
+    background: #1a7fd8;
+}
+
+/* شريط التمرير (اختياري) */
+.nav-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.nav-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.nav-container::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.nav-container::-webkit-scrollbar-thumb:hover {
+    background: #1a7fd8;
+}
         :root {
             --bg-color: #f0f8ff;
             --text-color: #1a1a1a;
@@ -176,21 +230,21 @@
     <div class="moving-box">
         <div class="moving-text">مبرمجون المستقبل | Future Programmers</div>
     </div>
-
-    <div class="nav-buttons">
-        <a class="nav-button" href="index.html">الصفحه الرئيسية 🚀</a>
-        <a class="nav-button" href="index.html">نماذج</a>
-        <a class="nav-button" href="page10.html">نماذج</a>
-        <a class="nav-button" href="page8.html">جرافيك</a>
-        <a class="nav-button" href="page7.html">بيانات التعريف</a>
-        <a class="nav-button" href="page4.html">الجداول،</a>
-        <a class="nav-button" href="page5.html">العناوين</a>
-        <a class="nav-button" href="page6.html">الروابط</a>
-        <a class="nav-button" href="page3.html">القوائم،</a>
-        <a class="nav-button" href="page9.html">عناصر النصوص</a>
-        <a class="nav-button" href="pags2.html">العناصر الهيكليه</a>
+<div class="nav-container">
+    <div class="horizontal-nav">
+        <a class="nav-item" href="index.html">الصفحه الرئيسية 🚀</a>
+        <a class="nav-item" href="index.html">نماذج</a>
+        <a class="nav-item" href="page10.html">نماذج</a>
+        <a class="nav-item" href="page8.html">جرافيك</a>
+        <a class="nav-item" href="page7.html">بيانات التعريف</a>
+        <a class="nav-item" href="page4.html">الجداول</a>
+        <a class="nav-item" href="page5.html">العناوين</a>
+        <a class="nav-item" href="page6.html">الروابط</a>
+        <a class="nav-item" href="page3.html">القوائم</a>
+        <a class="nav-item" href="page9.html">عناصر النصوص</a>
+        <a class="nav-item" href="pags2.html">العناصر الهيكليه</a>
     </div>
-
+</div>
    
         <!-- بقية العناصر النقطية -->
     </ul>
